@@ -170,7 +170,7 @@ $conn = mysqli_connect("localhost", "root", "", "db_company");
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">LAPORAN</h1>
+          <h1 class="h3 mb-4 text-gray-800">REKAPAN PENJUALAN</h1>
           <form action="" method="POST" class="form-inline mb-4">
             <label for="date1" style="padding-right: 10px;"> <strong>Tanggal:</strong></label>
             <input type="date" name="date1" id="date1" class="form-control mr-2">
@@ -230,9 +230,9 @@ if (isset($_POST['submit'])) {
                       <td><?= $row["jenis_warna"]; ?></td>
                       <td><?= $row["jenis_laminasi"]; ?></td>
                       <td><?= $row["quantity"]; ?></td>
-                      <td><?= $row["harga_satuan"]; ?></td>
+                      <td><?= number_format($row["harga_satuan"]) ; ?></td>
                       <td>HPP</td>
-                      <td><?= $row["total_harga"]; ?></td>
+                      <td><?= number_format($row["total_harga"]) ; ?></td>
                       <td>200.00000</td>
                     </tr>
                     <?php $no++;

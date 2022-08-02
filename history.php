@@ -191,7 +191,7 @@ $conn = mysqli_connect("localhost", "root", "", "db_company");
                   <tbody>
 
                     <?php
-                    $query = mysqli_query($conn, "SELECT * FROM transaksi INNER JOIN bahan ON transaksi.id_bahan=bahan.id JOIN user ON transaksi.id_user=user.id JOIN warna ON transaksi.id_warna=warna.id JOIN laminasi ON transaksi.id_laminasi=laminasi.id;");
+                    $query = mysqli_query($conn, "SELECT * FROM transaksi INNER JOIN bahan ON transaksi.id_bahan=bahan.id JOIN user ON transaksi.id_user=user.id JOIN warna ON transaksi.id_warna=warna.id JOIN laminasi ON transaksi.id_laminasi=laminasi.id WHERE lunas=1 ;");
                     $no = 1;
                     while ($row = mysqli_fetch_assoc($query)) : ?>
                     <tr>
