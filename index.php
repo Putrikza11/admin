@@ -18,14 +18,12 @@ $conn = mysqli_connect("localhost", "root", "", "db_company");
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet" type="text/css">
 
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body id="page-top">
@@ -121,17 +119,14 @@ $conn = mysqli_connect("localhost", "root", "", "db_company");
 
             <!-- Nav Item - Search Dropdown (Visible Only XS) -->
             <li class="nav-item dropdown no-arrow d-sm-none">
-              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-search fa-fw"></i>
               </a>
               <!-- Dropdown - Messages -->
-              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                aria-labelledby="searchDropdown">
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                 <form class="form-inline mr-auto w-100 navbar-search">
                   <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                      aria-label="Search" aria-describedby="basic-addon2">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
                       <button class="btn btn-primary" type="button">
                         <i class="fas fa-search fa-sm"></i>
@@ -147,8 +142,7 @@ $conn = mysqli_connect("localhost", "root", "", "db_company");
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                   Hello, Admin
                 </span>
@@ -196,7 +190,7 @@ $conn = mysqli_connect("localhost", "root", "", "db_company");
                       <th>Quantity</th>
                       <th>Total Harga</th>
                       <th>Aksi</th>
-                      <th></th>
+
                     </tr>
                   </thead>
                   <tbody>
@@ -207,58 +201,69 @@ $conn = mysqli_connect("localhost", "root", "", "db_company");
                     $query = mysqli_query($conn, "SELECT * FROM transaksi INNER JOIN bahan ON transaksi.id_bahan=bahan.id JOIN user ON transaksi.id_user=user.id;");
 
                     while ($data = mysqli_fetch_array($query)) { ?>
-                    <tr>
-                      <td> <?= $no++; ?></td>
-                      <td>
-                        <?= $data['tanggal']; ?>
-                      </td>
-                      <td> <?= $data['username']; ?></td>
-                      <td><?= $data['nama_brand']; ?></td>
-                      <td>
-                        <?= $data['ukuran_panjang'] . " x " . $data['ukuran_lebar'] . " x " . $data['ukuran_tinggi']
+                      <tr>
+                        <td> <?= $no++; ?></td>
+                        <td>
+                          <?= $data['tanggal']; ?>
+                        </td>
+                        <td> <?= $data['username']; ?></td>
+                        <td><?= $data['nama_brand']; ?></td>
+                        <td>
+                          <?= $data['ukuran_panjang'] . " x " . $data['ukuran_lebar'] . " x " . $data['ukuran_tinggi']
                           ?> </td>
-                      <td><?= $data['nama_bahan']; ?></td>
-                      <td><?= $data['quantity']; ?></td>
-                      <td><?= "Rp. " . number_format($data['total_harga']); ?></td>
-                      <td>
-                        <a href="https://skripsi.test/img/buktiTransaksi/62d16e4f04200-1657892431.png"
-                          target="_blank">Lihat
-                          bukti
-                          Pembayaran
-                        </a>
-                      </td>
+                        <td><?= $data['nama_bahan']; ?></td>
+                        <td><?= $data['quantity']; ?></td>
+                        <td><?= "Rp. " . number_format($data['total_harga']); ?></td>
+                        <td>
 
-                      <td>
+                          <!-- Button trigger modal -->
 
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                          konfirmasi
-                        </button>
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                          aria-hidden="true">
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-body">
-                                <img src="http://skripsi.test/img/buktiTransaksi/62d02be8188e6-1657809896.png" alt="">
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal<?= $data['id_transaksi'] ?>">
+                            Konfirmasi
+                          </button>
+                          <!-- Modal -->
+                          <div class="modal fade" id="exampleModal<?= $data['id_transaksi'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Rincian
+                                    Pesanan <?= $data['username'] ?> -
+                                    <?= $data['nama_brand'] ?>
+                                  </h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <!-- <img src="http://pembelian_putri.test/img/buktiTransaksi/<?= $data['bukti_pembayaran'] ?>"
+                                                                    alt="" style="width:-webkit-fill-available ;"> -->
+                                  <p>
+                                    Jenis Pembayaran : <?= $data['dp'] == false ? "Uang Muka / DP" : "Pelunasan" ?>
+                                  </p>
+                                  <p>
+                                    Bukti :
+                                    <a href="http://skrpsi.test/img/buktiTransaksi/<?= $data['bukti_pembayaran'] ?>" target="_blank">Lihat
+                                      Bukti
+                                      Pembayaran
+                                      <i class="fa-solid fa-up-right-from-square"></i>
+                                    </a>
+                                  </p>
+                                </div>
+
+                                <form action="konfirmasi.php?id=<?= $data['id_transaksi'] ?>" method="POST">
+                                  <div class="modal-footer">
+                                    <input type="hidden" name="dp" value="<?= $data['dp'] ?>">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" name='konfirmasi' class="btn btn-primary">Konfirmasi Pembayaran</button>
+                                  </div>
+                                </form>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </td>
+                        </td>
 
 
-                    </tr>
+                      </tr>
                     <?php } ?>
 
 
@@ -284,22 +289,23 @@ $conn = mysqli_connect("localhost", "root", "", "db_company");
   <!-- End of Page Wrapper -->
 
   <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
+  <a class=" scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
 
   <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Ready to
+            Leave?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-body">Select "Logout" below if you are
+          ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
           <a class="btn btn-primary" href="login.php">Logout</a>
